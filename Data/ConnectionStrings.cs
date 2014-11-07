@@ -9,7 +9,7 @@ namespace Data
             
 
             var environment = (ConfigurationManager.AppSettings["Environment"] ?? "").ToLower();
-             connectionStringToUse = string.Empty;
+             var connectionStringToUse = string.Empty;
 
             switch (environment)
             {
