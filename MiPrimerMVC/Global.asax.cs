@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AcklenAvenue.Data.NHibernate;
+using BootstrapMvcSample;
+using BootstrapSupport;
 using Data;
 using Domain.Services;
 using FluentNHibernate.Cfg.Db;
@@ -49,13 +51,14 @@ namespace MiPrimerMVC
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
+            BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
         protected override IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
-            kernel.Bind<ICalculadora>().To<CalculadoraRomana>();
             kernel.Bind<IReadOnlyRepository>().To<ReadOnlyRepository>();
             kernel.Bind<IWriteOnlyRepository>().To<WriteOnlyRepository>();
             kernel.Bind<ISession>().ToMethod(x => SessionFactory.GetCurrentSession());
