@@ -34,8 +34,7 @@ namespace DatabaseDeployer
             {
                 dd.Seed(new List<IDataSeeder>
                 {
-                    new OperacionesSeeder(session),
-                    new ObjectSeeder(session)
+                    new AccountSeeder(session)
                 });
                 tx.Commit();
             }
@@ -43,21 +42,6 @@ namespace DatabaseDeployer
             sessionFactory.Close();
             Console.WriteLine("Seed data added.");
             Thread.Sleep(2000);
-        }
-    }
-
-    public class ObjectSeeder : IDataSeeder
-    {
-        readonly ISession _session;
-
-        public ObjectSeeder(ISession session)
-        {
-            _session = session;
-        }
-
-        public void Seed()
-        {
-            
         }
     }
 }

@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Reflection;
+using System.Security.Policy;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 using AcklenAvenue.Data.NHibernate;
+using AutoMapper;
+using BootstrapSupport;
 using Data;
 using Domain.Services;
 using FluentNHibernate.Cfg.Db;
@@ -50,8 +56,8 @@ namespace MiPrimerMVC
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected override IKernel CreateKernel()
@@ -60,9 +66,11 @@ namespace MiPrimerMVC
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<IReadOnlyRepository>().To<ReadOnlyRepository>();
             kernel.Bind<IWriteOnlyRepository>().To<WriteOnlyRepository>();
+            kernel.Bind<IPasswordEncryptor>().To<HashPasswordEncryptor>();
             kernel.Bind<ISession>().ToMethod(x => SessionFactory.GetCurrentSession());
-            //kernel.Bind<IMappingEngine>().ToConstant(Mapper.Engine);
+            kernel.Bind<IMappingEngine>().ToConstant(Mapper.Engine);
             return kernel;
         }
+
     }
 }
