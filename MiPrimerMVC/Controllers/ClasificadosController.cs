@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MiPrimerMVC.Models;
 
 namespace MiPrimerMVC.Controllers
 {
-    [Authorize]
+    
     public class ClasificadosController : Controller
     {
         //
@@ -17,10 +18,10 @@ namespace MiPrimerMVC.Controllers
             return View();
         }
 
-        
+        [Authorize]    
         public ActionResult Create()
         {
-            return View();
+            return View(new ClasificadosCreateModel());
         }
 	}
 }

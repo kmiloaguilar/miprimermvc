@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using AcklenAvenue.Data.NHibernate;
 using AutoMapper;
+using BootstrapMvcSample;
 using BootstrapSupport;
 using Data;
 using Domain.Services;
@@ -57,6 +58,7 @@ namespace MiPrimerMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
+            ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 

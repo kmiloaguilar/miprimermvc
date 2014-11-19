@@ -7,8 +7,9 @@ using System.Web.Routing;
 using BootstrapMvcSample.Controllers;
 using NavigationRouteFilterExamples;
 using NavigationRoutes;
+using MiPrimerMVC.Controllers;
 
-namespace BootstrapMvcSample
+namespace MiPrimerMVC
 {
     public class ExampleLayoutsRouteConfig
     {
@@ -19,6 +20,12 @@ namespace BootstrapMvcSample
 
             routes.MapNavigationRoute<HomeController>("Automatic Scaffolding", c => c.Index(), "",
                                                       new NavigationRouteOptions {HasBreakAfter = true});
+
+            routes.MapNavigationRoute<AccountController>("Sign out", c => c.Logoff(), "",
+                                                      new NavigationRouteOptions { HasBreakAfter = true });
+
+            routes.MapNavigationRoute<ClasificadosController>("Crear Clasificado", c => c.Create(), "",
+                                                      new NavigationRouteOptions { HasBreakAfter = true });
 
             // this route will only show if users are in the role specified in the AdministrationRouteFilter
             // by default, when you run the site, you will not see this. Explore the AdministrationRouteFilter
