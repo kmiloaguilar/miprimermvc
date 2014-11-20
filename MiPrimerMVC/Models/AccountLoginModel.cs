@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Web.Helpers;
 
 namespace MiPrimerMVC.Models
 {
@@ -11,6 +12,7 @@ namespace MiPrimerMVC.Models
         [Required(ErrorMessage = "Password is required")]
         [StringLength(20,ErrorMessage = "The password must be between 8 and 20 characters.",MinimumLength = 8)]
         [DataType(DataType.Password)]
+        
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }

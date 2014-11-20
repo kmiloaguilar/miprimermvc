@@ -154,6 +154,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
@@ -172,9 +173,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountLoginModel.cs" />
+    <Compile Include="Models\AccountRegisterModel.cs" />
     <Compile Include="Models\ClasificadosCreateModel.cs" />
+    <Compile Include="Models\CustomValueAttribute.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="NavigationRouteFilterExamples\AdministrationRouteFilter.cs" />
+    <Compile Include="NavigationRouteFilterExamples\AuthenticationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +262,7 @@
     <Content Include="Views\examplelayouts\Narrow.cshtml" />
     <Content Include="Views\examplelayouts\marketing.cshtml" />
     <Content Include="Views\examplelayouts\Fluid.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

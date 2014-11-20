@@ -59,6 +59,7 @@ namespace MiPrimerMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
             ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
+            AutoMapperConfig.RegisterMaps();
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 

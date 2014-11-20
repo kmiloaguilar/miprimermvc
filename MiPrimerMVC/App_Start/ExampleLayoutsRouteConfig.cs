@@ -17,15 +17,26 @@ namespace MiPrimerMVC
         {
             // this enables menu suppression for routes with a FilterToken of "admin" set
             NavigationRouteFilters.Filters.Add(new AdministrationRouteFilter());
+            NavigationRouteFilters.Filters.Add(new AuthenticationFilter());
 
             routes.MapNavigationRoute<HomeController>("Automatic Scaffolding", c => c.Index(), "",
                                                       new NavigationRouteOptions {HasBreakAfter = true});
 
-            routes.MapNavigationRoute<AccountController>("Sign out", c => c.Logoff(), "",
-                                                      new NavigationRouteOptions { HasBreakAfter = true });
+            
+                
+                    routes.MapNavigationRoute<AccountController>("Sign out", c => c.Logoff(), "",
+                        new NavigationRouteOptions {HasBreakAfter = true, FilterToken = "logged"});
 
-            routes.MapNavigationRoute<ClasificadosController>("Crear Clasificado", c => c.Create(), "",
-                                                      new NavigationRouteOptions { HasBreakAfter = true });
+                    routes.MapNavigationRoute<ClasificadosController>("Crear Clasificado", c => c.Create(), "",
+                        new NavigationRouteOptions {HasBreakAfter = true, FilterToken = "logged"});
+                
+            
+                routes.MapNavigationRoute<AccountController>("Sign in", c => c.Login(), "",
+                                                          new NavigationRouteOptions { HasBreakAfter = true });
+            
+
+
+            
 
             // this route will only show if users are in the role specified in the AdministrationRouteFilter
             // by default, when you run the site, you will not see this. Explore the AdministrationRouteFilter

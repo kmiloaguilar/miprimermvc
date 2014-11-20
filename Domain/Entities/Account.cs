@@ -1,3 +1,5 @@
+using System;
+
 namespace Domain.Entities
 {
     public class Account : IEntity
@@ -5,6 +7,7 @@ namespace Domain.Entities
         public Account()
         {
             Archived = false;
+            DateOfBirth = DateTime.Today;
         }
 
         public Account(string email, string encryptedPassword)
@@ -12,9 +15,14 @@ namespace Domain.Entities
             Archived = false;
             Email = email;
             EncryptedPassword = encryptedPassword;
+            DateOfBirth = DateTime.Today;
         }
 
         public virtual string Email { get; protected set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
+        public virtual bool TermsAndConditionsAccepted { get; set; }
         public virtual string EncryptedPassword { get; protected set; }
         public virtual long Id { get; set; }
         public virtual bool Archived { get; protected set; }
