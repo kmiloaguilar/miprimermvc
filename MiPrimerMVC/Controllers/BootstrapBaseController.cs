@@ -31,7 +31,7 @@ namespace BootstrapMvcSample.Controllers
             TempData.Add(Alerts.ERROR, message);
         }
 
-        public void SetAuthenticationCookie(string userEmail, List<string> roles)
+        public void SetAuthenticationCookie(string userEmail, string roles)
         {
             var cookieSection = (HttpCookiesSection)ConfigurationManager.GetSection("system.web/httpCookies");
             var authenticationSection =
@@ -41,7 +41,7 @@ namespace BootstrapMvcSample.Controllers
                 new FormsAuthenticationTicket(
                     1, userEmail, DateTime.Now,
                     DateTime.Now.AddMinutes(authenticationSection.Forms.Timeout.TotalMinutes),
-                    false, string.Join(";", roles.ToArray()));
+                    false, roles);
 
             String encryptedTicket = FormsAuthentication.Encrypt(authTicket);
 

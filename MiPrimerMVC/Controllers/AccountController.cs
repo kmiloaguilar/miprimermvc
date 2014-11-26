@@ -44,7 +44,7 @@ namespace MiPrimerMVC.Controllers
                 if (userisValid != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
-                    SetAuthenticationCookie(model.Email, new List<string>());
+                    SetAuthenticationCookie(model.Email, userisValid.Roles);
 
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))

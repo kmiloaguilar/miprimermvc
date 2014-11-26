@@ -80,20 +80,14 @@ namespace MiPrimerMVC
             if (Context.User != null)
             {
                 string cookieName = FormsAuthentication.FormsCookieName;
-
                 HttpCookie authCookie = Context.Request.Cookies[cookieName];
                 if (authCookie == null)
-
                     return;
-
 
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
                 string[] roles = authTicket.UserData.Split(new[] { ';' });
-
-
                 var fi = (FormsIdentity)(Context.User.Identity);
-
                 Context.User = new GenericPrincipal(fi, roles);
             }
         }
