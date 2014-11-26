@@ -76,7 +76,7 @@ namespace MiPrimerMVC.Controllers
                 newAccount.ChangeEncryptedPassword( _passwordEncryptor.Encrypt(model.Password));
                 newAccount = _writeOnlyRepository.Create(newAccount);
                 Success(string.Format("The user with the email {0} has been created",newAccount.Email));
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Account");
             }
 
             return View(model);

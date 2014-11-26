@@ -25,10 +25,10 @@ namespace MiPrimerMVC
             
                 
                     routes.MapNavigationRoute<AccountController>("Sign out", c => c.Logoff(), "",
-                        new NavigationRouteOptions {HasBreakAfter = true, FilterToken = "logged"});
+                        new NavigationRouteOptions {HasBreakAfter = true});
 
                     routes.MapNavigationRoute<ClasificadosController>("Crear Clasificado", c => c.Create(), "",
-                        new NavigationRouteOptions {HasBreakAfter = true, FilterToken = "logged"});
+                        new NavigationRouteOptions {HasBreakAfter = true});
                 
             
                 routes.MapNavigationRoute<AccountController>("Sign in", c => c.Login(), "",

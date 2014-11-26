@@ -152,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
@@ -160,6 +162,8 @@
     <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
@@ -169,17 +173,19 @@
     <Compile Include="Controllers\ClasificadosController.cs" />
     <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavigationMenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountLoginModel.cs" />
     <Compile Include="Models\AccountRegisterModel.cs" />
     <Compile Include="Models\ClasificadosCreateModel.cs" />
-    <Compile Include="Models\CustomValueAttribute.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="NavigationRouteFilterExamples\AdministrationRouteFilter.cs" />
     <Compile Include="NavigationRouteFilterExamples\AuthenticationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationAttributes\DescriptionValidationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\body.css" />
@@ -210,6 +216,8 @@
     <Content Include="CodeTemplates\AddView\CSHTML\Create.tt" />
     <Content Include="CodeTemplates\AddView\CSHTML\BootstrapForm.tt" />
     <Content Include="CodeTemplates\AddController\ControllerWithContext.tt" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Manage\Index2.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -263,6 +271,8 @@
     <Content Include="Views\examplelayouts\marketing.cshtml" />
     <Content Include="Views\examplelayouts\Fluid.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_navigationMenu.cshtml" />
+    <Content Include="Views\NavigationMenu\Render.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

@@ -8,7 +8,8 @@ namespace MiPrimerMVC
     {
         public static void RegisterMaps()
         {
-            Mapper.CreateMap<AccountRegisterModel, Account>();
+            Mapper.CreateMap<AccountRegisterModel, Account>().ReverseMap();
+            Mapper.CreateMap<ClasificadosCreateModel, Clasificado>().ReverseMap();
         }
     }
 }
