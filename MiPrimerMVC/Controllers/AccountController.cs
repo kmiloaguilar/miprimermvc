@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using BootstrapMvcSample.Controllers;
@@ -43,6 +44,8 @@ namespace MiPrimerMVC.Controllers
                 if (userisValid != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                    SetAuthenticationCookie(model.Email, new List<string>());
+
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {

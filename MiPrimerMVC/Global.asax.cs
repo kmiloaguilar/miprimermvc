@@ -75,5 +75,33 @@ namespace MiPrimerMVC
             return kernel;
         }
 
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
+        {
+            if (Context.User != null)
+            {
+                string cookieName = FormsAuthentication.FormsCookieName;
+
+                HttpCookie authCookie = Context.Request.Cookies[cookieName];
+                if (authCookie == null)
+
+                    return;
+
+
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                string[] roles = authTicket.UserData.Split(new[] { ';' });
+
+
+                var fi = (FormsIdentity)(Context.User.Identity);
+
+                Context.User = new GenericPrincipal(fi, roles);
+            }
+        }
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
