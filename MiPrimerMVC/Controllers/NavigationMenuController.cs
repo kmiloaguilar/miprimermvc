@@ -14,27 +14,68 @@ namespace MiPrimerMVC.Controllers
             menu.ApplicationTitle = "Clasificados";
 
             menu.MenuItems = new List<MenuItemModel>();
-            menu.MenuItems.Add(
-                new MenuItemModel
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                if (HttpContext.User.IsInRole("admin"))
+                {
+                    menu.MenuItems.Add(
+                        new MenuItemModel
+                        {
+                            IsDropdown = false,
+                            ActionLinkModel = new ActionLinkModel
+                            {
+                                Action = "Index2",
+                                Controller = "Manage",
+                                DisplayName = "Admin"
+                            }
+                        });
+                }
+                menu.MenuItems.Add(
+                    new MenuItemModel
+                    {
+                        IsDropdown = false,
+                        ActionLinkModel = new ActionLinkModel
+                        {
+                            Action = "Logoff",
+                            Controller = "Account",
+                            DisplayName = "Sign Out"
+                        }
+                    });
+                menu.MenuItems.Add(new MenuItemModel
                 {
                     IsDropdown = false,
                     ActionLinkModel = new ActionLinkModel
                     {
-                        Action = "SignIn",
-                        Controller = "Account",
-                        DisplayName = "Sign In"
+                        Action = "Create",
+                        Controller = "Clasificados",
+                        DisplayName = "Crear Clasificado"
                     }
                 });
-            menu.MenuItems.Add(new MenuItemModel
+            }
+            else
             {
-                IsDropdown = false,
-                ActionLinkModel = new ActionLinkModel
+                menu.MenuItems.Add(
+                    new MenuItemModel
+                    {
+                        IsDropdown = false,
+                        ActionLinkModel = new ActionLinkModel
+                        {
+                            Action = "SignIn",
+                            Controller = "Account",
+                            DisplayName = "Sign In"
+                        }
+                    });
+                menu.MenuItems.Add(new MenuItemModel
                 {
-                    Action = "Register",
-                    Controller = "Account",
-                    DisplayName = "Register"
-                }
-            });
+                    IsDropdown = false,
+                    ActionLinkModel = new ActionLinkModel
+                    {
+                        Action = "Register",
+                        Controller = "Account",
+                        DisplayName = "Register"
+                    }
+                });
+            }
 
 
             return PartialView(menu);
